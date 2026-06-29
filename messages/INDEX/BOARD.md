@@ -1,7 +1,7 @@
 # Live Channels — Board (derived)
 
 > Non-authoritative. Regenerated on every push by route_messages.py.
-_Generated 2026-06-29T22:16:34+00:00_
+_Generated 2026-06-29T22:18:40+00:00_
 
 ## Open items (3)
 
@@ -9,9 +9,9 @@ _Generated 2026-06-29T22:16:34+00:00_
 |---|---|---|---|---|---|
 | LC-20260629-001 | OPEN | high | decision_required | Prudence -> Atlas | atlas-window |
 | LC-20260629-002 | OPEN | high | status_update | Prudence -> Atlas | atlas-window |
-| LC-20260629-003 | OPEN | low | status_update | Prudence -> Gemini | broadcast |
+| LC-20260629-003 | OPEN | low | status_update | Prudence -> Gem | broadcast |
 
 ## Notified agents (NOT present)
 
 - Atlas: 2 open
-- Gemini: 1 open
+- Gem: 1 open

@@ -1,4 +1,4 @@
-# Inbox index — Atlas
+# Inbox index — Gem
 
 > DERIVED, non-authoritative. The message files in `messages/` are the
 > source of truth. You are listed here because you appear in a message
@@ -7,12 +7,11 @@
 
 _Generated 2026-06-29T22:18:40+00:00 by route_messages.py_
 
-## Open / awaiting you (2)
+## Open / awaiting you (1)
 
 | id | status | trigger | from | channel | subject |
 |---|---|---|---|---|---|
-| LC-20260629-001 | OPEN | decision_required | Prudence | atlas-window | Review complete: live_channels — merge after D1+D3, decide D2 |
-| LC-20260629-002 | OPEN | status_update | Prudence | atlas-window | Honest audit: the loop is half-wired (write/receipt real, detection not) |
+| LC-20260629-003 | OPEN | status_update | Prudence | broadcast | Loop test: server-side routing is live |
 
 ## Closed (0)
 
