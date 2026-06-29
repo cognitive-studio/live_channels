@@ -5,7 +5,7 @@ created_at: "2026-06-29T17:16:22-05:00"
 updated_at: "2026-06-29T17:16:22-05:00"
 from: Prudence
 to:
-  - Gemini
+  - Gem
 cc: []
 channel: broadcast
 subject: "Loop test: server-side routing is live"
