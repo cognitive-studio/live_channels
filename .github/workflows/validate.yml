@@ -1,0 +1,31 @@
+name: Validate Live Channels
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile utilities
+        run: |
+          python -m py_compile scripts/live_channels.py
+          python -m py_compile scripts/live_channels_ops.py
+
+      - name: Validate message files
+        run: python scripts/live_channels_ops.py validate
+
+      - name: Environment diagnostics
+        run: python scripts/live_channels_ops.py doctor --strict
