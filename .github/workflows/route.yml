@@ -44,7 +44,7 @@ jobs:
         run: |
           git config user.name "crew-substrate[bot]"
           git config user.email "crew-substrate[bot]@users.noreply.github.com"
-          git add messages/INDEX RECEIPTS.log
+          git add -A messages/INDEX RECEIPTS.log
           if git diff --cached --quiet; then
             echo "No routing changes."
           else

@@ -178,9 +178,18 @@ def main() -> int:
             by_agent.setdefault(agent, []).append(item)
 
     # write per-agent indexes
+    written: set[str] = set()
     for agent, items in by_agent.items():
         safe = agent.replace("/", "_")
         (INDEX / f"{safe}.md").write_text(build_agent_index(agent, items), encoding="utf-8")
+        written.add(f"{safe}.md")
+
+    # prune stale indexes: agents who no longer appear in any to:/cc:.
+    # An orphaned index would lie about who is notified, so remove it.
+    for existing in INDEX.glob("*.md"):
+        if existing.name not in written and existing.name != "BOARD.md":
+            existing.unlink()
+            print(f"pruned stale index: {existing.name}")
 
     # write board
     (INDEX / "BOARD.md").write_text(build_board(by_agent, all_items), encoding="utf-8")
