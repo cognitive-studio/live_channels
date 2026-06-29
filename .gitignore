@@ -1,0 +1,4 @@
+.live_channels/
+__pycache__/
+*.pyc
+.DS_Store
