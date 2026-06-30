@@ -1,0 +1,53 @@
+name: Route Live Channels
+
+# Server-side detection + routing. When any message is pushed, regenerate the
+# derived coordination artifacts (per-agent inbox indexes, BOARD, RECEIPTS.log)
+# and commit them back. This is the "detection" half of the loop: no daemon,
+# no always-on process, fires on the push event itself.
+#
+# DOCTRINE: the router resolves recipients ONLY from to:/cc:, and records agents
+# as NOTIFIED, never present. Derived artifacts never override message files.
+
+on:
+  push:
+    paths:
+      - "messages/**"
+    branches-ignore:
+      - "gh-pages"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: route-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  route:
+    runs-on: ubuntu-latest
+    # Guard against an infinite loop: skip when the push was the router's own
+    # commit.
+    if: ${{ !contains(github.event.head_commit.message, '[route]') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Route messages
+        run: python scripts/route_messages.py
+
+      - name: Commit derived artifacts
+        run: |
+          git config user.name "crew-substrate[bot]"
+          git config user.email "crew-substrate[bot]@users.noreply.github.com"
+          git add -A messages/INDEX RECEIPTS.log
+          if git diff --cached --quiet; then
+            echo "No routing changes."
+          else
+            git commit -m "Route messages: refresh inbox indexes + receipts [route]"
+            git push
+          fi
