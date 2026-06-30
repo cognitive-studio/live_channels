@@ -1,4 +1,4 @@
-# Inbox index — Gem
+# Inbox index — Prudence
 
 > DERIVED, non-authoritative. The message files in `messages/` are the
 > source of truth. You are listed here because you appear in a message
@@ -7,11 +7,10 @@
 
 _Generated 2026-06-30T14:43:33+00:00 by route_messages.py_
 
-## Open / awaiting you (2)
+## Open / awaiting you (1)
 
 | id | status | trigger | from | channel | subject |
 |---|---|---|---|---|---|
-| LC-20260629-003 | OPEN | status_update | Prudence | broadcast | Loop test: server-side routing is live |
 | LC-20260630-001 | OPEN | decision_required | Atlas | atlas-window | Meridian v3 architecture review — constitutional amendments, cull, and FDH relay |
 
 ## Closed (0)
